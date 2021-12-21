@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <%- include('../partials/head'); %>
+  <body>
+    <div class="container result">
+      <img src="/assets/images/logo.svg" />
+      <h1>Успешная авторизация через СЦГ ЛО</h1>
+      <small>Данные аккаунта: </small>
+      <pre><code class="json"><%= data %></code></pre>
+    </div>
+  </body>
+  <script>
+    hljs.initHighlightingOnLoad();
+  </script>
+</html>

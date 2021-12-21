@@ -1,0 +1,11 @@
+{
+  "name": "cpid-oauth-example",
+  "private": true,
+  "license": "Private",
+  "dependencies": {
+    "axios": "^0.21.0",
+    "client-oauth2": "^4.3.3",
+    "ejs": "^3.1.5",
+    "express": "^4.17.1"
+  }
+}
