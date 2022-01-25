@@ -5,7 +5,7 @@ const signals = require("./signals")
 
 const PORT = +(process.env.PORT || '3000')
 
-const CPID_HOST = 'https://cpid.111111111.dev'
+const CPID_HOST = 'https://id.primorsky.online'
 
 const cpidAuth = new ClientOAuth2({
   clientId: '15t6HRg2qIoqDxvHl6Vn_wazAfbquARN',
@@ -13,7 +13,7 @@ const cpidAuth = new ClientOAuth2({
   accessTokenUri: `${CPID_HOST}/api/oauth/token`,
   authorizationUri: `${CPID_HOST}/authorize`,
   redirectUri: `http://localhost:${PORT}/auth/cpid/callback`,
-  scopes: ['email', 'phone', 'full_name', 'birthday', 'gender']
+  scopes: ['email', 'phone', 'full_name']
 })
 
 const app = express()
