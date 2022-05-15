@@ -5,15 +5,15 @@ const signals = require("./signals")
 
 const PORT = +(process.env.PORT || '3000')
 
-const CPID_HOST = 'https://id.primorsky.online'
+const ID_HOST = process.env.ID_HOST
 
 const cpidAuth = new ClientOAuth2({
-  clientId: '15t6HRg2qIoqDxvHl6Vn_wazAfbquARN',
-  clientSecret: 'AVAjAWArM0Mh4myNp-xhtMWLX6bE',
-  accessTokenUri: `${CPID_HOST}/api/oauth/token`,
-  authorizationUri: `${CPID_HOST}/authorize`,
+  clientId: process.env.CLIENT_ID || '0zptSHV9n2p93fJTCQNYm7-ghWmrza4qg6iKVaLl3OQ',
+  clientSecret: process.env.CLIENT_SECRET || 'iVUBPgZULmhDurYtkugRnWCllRn5rapnwi7k5mWeFNA',
+  accessTokenUri: `${ID_HOST}/api/oauth/token`,
+  authorizationUri: `${ID_HOST}/authorize`,
   redirectUri: `http://localhost:${PORT}/auth/cpid/callback`,
-  scopes: ['email', 'phone', 'full_name']
+  scopes: ["read", "email", "phone", "full_name", "birthday", "gender", "snils", "vehicles"]
 })
 
 const app = express()
@@ -35,7 +35,7 @@ app.get("/auth/cpid/callback", async (req, res) => {
 
     const { data } = await axios(user.sign({
       method: 'get',
-      url: `${CPID_HOST}/api/v1/me.json`
+      url: `${ID_HOST}/api/v1/me.json`
     }))
 
     return res.render('auth/success', { data: JSON.stringify(data, null, 4) })
